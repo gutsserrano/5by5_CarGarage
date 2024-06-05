@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Controllers
 {
-    internal class CarController
+    public class CarController
     {
         private CarService _carService;
 
@@ -17,9 +17,9 @@ namespace Controllers
             _carService = new CarService();
         }
 
-        public bool InsertCar(Car car)
+        public bool InsertCar(List<Car> cars)
         {
-            return _carService.InsertCar(car);
+            return _carService.InsertCar(cars);
         }
     }
 }

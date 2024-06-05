@@ -24,5 +24,10 @@ namespace Models
         
         [JsonProperty("color")]
         public string Color { get; set; }
+
+        public string Getjson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }

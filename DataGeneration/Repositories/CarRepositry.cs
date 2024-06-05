@@ -17,7 +17,9 @@ namespace Repositories
             this.FilePath = file;
 
             if (!Directory.Exists(Path))
+            {
                 Directory.CreateDirectory(Path);
+            }
 
             if (!File.Exists(Path + FilePath))
             {
@@ -30,28 +32,16 @@ namespace Repositories
         {
             try
             {
-                var sw = new StreamWriter(Path + FilePath);
-
-                sw.WriteLine(ReadFile());
-                sw.WriteLine(carJson);
-
-                sw.Close();
+                using (var sw = new StreamWriter(Path + FilePath))
+                {
+                    sw.WriteLine(carJson);
+                }
                 return true;
             }
             catch (Exception)
             {
                 return false;
             }
-        }
-
-        private string ReadFile()
-        {
-            StringBuilder sb = new StringBuilder();
-
-            foreach (string linha in File.ReadAllLines(Path + FilePath))
-                sb.AppendLine(linha);
-
-            return sb.ToString();
         }
     }
 }
