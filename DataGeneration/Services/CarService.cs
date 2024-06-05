@@ -3,6 +3,7 @@ using Newtonsoft.Json;
 using Repositories;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,10 @@ namespace Services
     public class CarService
     {
         private ICarRepository _carRepository;
-        private readonly string path = "../../../../../Reports/";
-        private readonly string file = "carJson.json";
 
         public CarService()
         {
-            _carRepository = new CarRepositry(path, file);
+            _carRepository = new CarRepositry(Car.PATH, Car.FILE);
         }
 
         public bool InsertCar(List<Car> cars)

@@ -10,6 +10,9 @@ namespace Models
 {
     public class Car
     {
+        public static readonly string PATH = "../../../../../Reports/";
+        public static readonly string FILE = "cars.json";
+
         [JsonProperty("plate_number")]
         public string Plate { get; set; }
 
@@ -24,10 +27,5 @@ namespace Models
         
         [JsonProperty("color")]
         public string Color { get; set; }
-
-        public string Getjson()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
     }
 }
